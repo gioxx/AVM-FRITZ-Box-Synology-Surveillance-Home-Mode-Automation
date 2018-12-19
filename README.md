@@ -1,19 +1,30 @@
-AVMFritz-Box7490-SynologySurveillance-Automation
+## AVM FRITZ!Box Synology Surveillance Home Mode Automation
 
-REQUIREMENTS: PHP7 from Synology Package Manager.
+|Work in progress ... | % |
+|--|--|
+| Articolo sul blog | 30% |
+| Script | 100% |
 
-Script makes soap queries to a list of AVM Fritz!Box routers to find out if a list of MAC addresses are active on the WiFi network. The PHP script has been written to accept at least one MAC but more can be added with a space
+Fork basato sul già ottimo lavoro di **Mark Schipper**, [qui disponibile](https://github.com/mschippr/AVMFritz-Box7490-SynologySurveillance-Automation). Io ho operato alcune piccole modifiche, introdotto l'utilizzo di Telegram (per farsi inviare il cambio di stato in "*tempo reale*") e tradotto il README in italiano, pubblicando inoltre un articolo sul blog per spiegarti l'uso di questi script e la possibilità di automatizzare il cambio dello stato *Home Mode* di [Synology Surveillance Station](https://www.synology.com/it-it/surveillance) (*dato che il Geofencing ufficiale è davvero una ciofeca!*).
 
-The shell script uses API calls to switch the HOME MODE option based on the result from the SOAP response.
+## Requisiti di sistema
 
-The shell script has the IP of your Synology Surveillance Station and a login. On my SS i have setup a API user with only rights to enable/disable home mode i then use this user/pass in the script.
+ - PHP 7 (disponibile nel Synology Package Manager) con estensioni soap e curl.
+ - Utenza "API" per permettere di disabilitare o abilitare Home Mode della Surveillance Station (sconsigliato utilizzarne una già esistente con maggiori accessi).
+ - Pacchetto file contenuti nel repository (aggiornati in caso di necessità).
+ - **Opzionale**: bot Telegram tramite il quale ricevere i cambi di stato.
 
-I have the SH, PHP, STATE, and RETRY files in the api user directories. The state/retry files store the last state that was switched to stop constant API calls to the SS. You will need to grant appropriate file permissions and then run the shell script in the Synology Task Scheduler. I run mine once every 5 mins.
+## Di cosa si tratta
 
-The script will perform a retry on leaving home mode just to ensure there is not too much flip/flopping of the home mode option if an issue occurs due to the WLAN devices switching, or dropping off the WLAN, etc.
+Lo script PHP lancia una query SOAP a uno o più router AVM Fritz!Box per verificare che un MAC address sia attivo sulla rete WiFi. Seppur pensato per verificare un solo MAC, questo può verificarne anche più contemporaneamente, basterà specificarli tutti intervallandoli con uno spazio vuoto.
 
-Edit Switch_Homemode.sh configuration as requred.
+Lo script di shell utilizza chiamate API per modificare l'opzione Home Mode della Surveillance Station (per comodità *SS*) basandosi sul risultato della query SOAP. Lo script contiene infatti l'IP del tuo Synology e un'utenza della SS. Il consiglio è quello di creare un apposito utente con i soli diritti di abilitazione / disabilitazione dell'opzione Home Mode, così da poter riportare in chiaro username e password all'interno dello script senza troppe preoccupazioni.
 
-Syntax: Switch_Homemode.sh MAC1 MAC2
+Gli script SH, PHP, STATE, e RETRY trovano spazio all'interno della directory dell'utente appena creata. I due file di state e retry contengono l'ultimo stato dell'opzione Home Mode così da evitare di contattare costantemente le API della SS. Tu dovrai solo mettere a posto i permessi dei file e avviare lo script di shell tramite l'Utilità di Pianificazione del Synology. Io ho scelto di eseguire lo script di controllo ogni 5 minuti.
 
-Syntax in Synology Task Scheduler: bash /var/services/homes/api_user/switch_homemode.sh MAC1 MAC2
+**La modifica dello script switch_homemode.sh è necessaria.**
+
+ - Sintassi del singolo file: *./switch_homemode.sh MAC1 MAC2*
+ - Sintassi per l'Utilità di Pianificazione in Synology: *bash
+   /var/services/homes/api_user/switch_homemode.sh MAC1 MAC2*
+

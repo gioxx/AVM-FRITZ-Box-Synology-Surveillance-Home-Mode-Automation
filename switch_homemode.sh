@@ -1,13 +1,17 @@
 #!/bin/bash
 
-######## Configuration
+######## Personal configuration
 SYNO_SS_USER="api_user";
 SYNO_SS_PASS="pass";
 SYNO_URL="192.168.1.1:5000";
-FRITZ_URL='192.168.1.2:192.168.1.3';
-STATEFILE='/var/services/homes/api_user/synohomemode.state';
-RETRYFILE='/var/services/homes/api_user/synohomemode.retry';
-CHECKFRITZ='/usr/local/bin/php70 /var/services/homes/api_user/fritz_activemac.php';
+FRITZ_URL='192.168.1.2';
+
+######## Telegram configuration
+TELEGRAM=0; #0 = disabled | 1 = enabled (if enabled, You have to fill BOT_TOKEN, CHAT_ID, MSG_SS_ACTIVE and MSG_SS_INACTIVE)
+BOT_TOKEN="111111111:AAZZAAZ1zaaz1A0_XXXXXXXXXXXXXXXXXXX";
+CHAT_ID="-111111111";
+MSG_SS_ACTIVE="Synology Surveillance Activated. I'm recording.";
+MSG_SS_INACTIVE="Synology Surveillance Deactivated. I'm not recording anymore.";
 
 ######### Internal variables ############
 MACS=$@;
