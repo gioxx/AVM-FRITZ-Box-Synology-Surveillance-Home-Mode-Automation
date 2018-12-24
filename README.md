@@ -1,13 +1,9 @@
+
 ## AVM FRITZ!Box Synology Surveillance Home Mode Automation
 
 ![AVM FRITZ!Box Synology Surveillance Home Mode Automation](https://gioxx.org/wp-content/uploads/2018/12/synology-surveillance-station-automatizzare-lhome-mode-tramite-wifi-2.png)
 
-|Work in progress ... | % |
-|--|--|
-| Articolo sul blog | 40% |
-| Script | 100% |
-
-Fork basato sul già ottimo lavoro di **Mark Schipper**, [qui disponibile](https://github.com/mschippr/AVMFritz-Box7490-SynologySurveillance-Automation). Io ho operato alcune piccole modifiche, introdotto l'utilizzo di Telegram (per farsi inviare il cambio di stato in "*tempo reale*") e tradotto il README in italiano, pubblicando inoltre un articolo sul blog per spiegarti l'uso di questi script e la possibilità di automatizzare il cambio dello stato *Home Mode* di [Synology Surveillance Station](https://www.synology.com/it-it/surveillance) (*dato che il Geofencing ufficiale è davvero una ciofeca!*).
+Fork basato sul già ottimo lavoro di **Mark Schipper**, [qui disponibile](https://github.com/mschippr/AVMFritz-Box7490-SynologySurveillance-Automation). Io ho operato alcune piccole modifiche, introdotto l'utilizzo di Telegram (per farsi inviare il cambio di stato in "*tempo reale*") e tradotto il README in italiano, pubblicando inoltre un [articolo sul blog](https://gioxx.org/2018/12/24/synology-surveillance-station-home-mode-automatico-tramite-wifi/) per spiegarti l'uso di questi script e la possibilità di automatizzare il cambio dello stato *Home Mode* di [Synology Surveillance Station](https://www.synology.com/it-it/surveillance) (*dato che il Geofencing ufficiale è davvero una ciofeca!*).
 
 ## Requisiti di sistema
 
